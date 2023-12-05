@@ -1,15 +1,30 @@
+import processing.core.PApplet;
+import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Iterator;
+public class Bullet {
+    private float x, y;
+    private float xSpeed, ySpeed;
+    private  final int DIAMETER = 5;
 
-public class Bullet extends Parent{
-    private int stun = 10;
-    private ArrayList<Bullet> bullet = new ArrayList<Bullet>();
-    public Bullet(int stun, ArrayList<Bullet>bullet){
-        for (int i = 0; i < bullet.size(); i++) {
-
-        }
-
+    public Bullet(float x, float y, float xSpeed, float ySpeed){
+        this.x = x;
+        this.y = y;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
     }
-    public void detectCollision(){
 
+    public void draw(PApplet window) {
+        window.ellipse(x, y, DIAMETER, DIAMETER);
+        window.fill(0,10,255);
+    }
+
+    public void move() {
+        x += xSpeed;
+        y += ySpeed;
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle((int)x, (int)y, DIAMETER, DIAMETER);
     }
 }
