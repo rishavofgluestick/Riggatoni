@@ -43,6 +43,6 @@ public class Cart {
     }
 
     public void slowDown() {
-        xSpeed *= 0.2; // slows down the cart by 50%
+        xSpeed *= 0.5; // slows down the cart by 50%
     }
 }

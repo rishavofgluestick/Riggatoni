@@ -16,22 +16,25 @@ public class GameDisplay extends PApplet {
     }
 
     public void setup() {
-        mario = new Mario(25,380,10,10,1);
-        for (int i = 300; i < 380; i+=20) {
-            carts.add(new Cart(25, i+30, 10, 10, 1,0));
+        mario = new Mario(25,370,60,60,1);
+        for (int i = 150; i <= 300; i+=100) {
+            carts.add(new Cart(25, i+20, 60, 60, 1,0));
+        }
+        for (int i = 450; i <= 550; i+=100) {
+            carts.add(new Cart(25, i+20, 60, 60, 1,0));
         }
         int sum = 0;
         for (int i = 0; i < carts.size(); i++) {
             sum += carts.get(i).getY();
         }
         int middleY = sum / carts.size();//Setup Mario in the middle
-        mario = new Mario(25, middleY, 10, 10, 1);
+
     }
 
     public void draw() {
         background(255); //background of screen
         fill(0, 255, 0);//Fills in the track
-        rect(0, 250, width, 180);
+        rect(0, 150, width, 500);
         fill(255, 0, 0);//fills in Mario
         mario.draw(this);
         mario.move();
@@ -89,7 +92,8 @@ public class GameDisplay extends PApplet {
             double magnitude = Math.sqrt(xDirection * xDirection + yDirection * yDirection);
             xDirection /= magnitude;
             yDirection /= magnitude;
-            Bullet bullet = new Bullet(mario.getX(), mario.getY(), (float) xDirection, (float) yDirection);
+            Bullet bullet = new Bullet(mario.getX()+60, mario.getY()+60, 100);
+            bullet.aimat(mouseX,mouseY);
             bullets.add(bullet);
         }
     }
