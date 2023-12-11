@@ -1,4 +1,6 @@
 import processing.core.PApplet;
+import processing.core.PImage;
+
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,9 +19,11 @@ public class Cart {
         this.position = position;
     }
 
-    public void draw(PApplet window) {
-        window.rect(x, y, w, h);
+    public void draw(PApplet window, PImage img) {
+       // window.rect(x, y, w, h);
         window.fill(0,10,255); //blue
+        window.image(img, x, y, w, h);
+
     }
 
     public int getPosition(){
